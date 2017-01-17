@@ -30,13 +30,13 @@ public class WordOperations {
 
     public String setWordStem(String word) {
         PolishStemmer stemmer = new PolishStemmer();
-        ArrayList<CharSequence> ListaStem = new ArrayList<CharSequence>();
+        ArrayList<CharSequence> stemList = new ArrayList<CharSequence>();
         List<WordData> processing = stemmer.lookup(word);
         processing.stream().forEach((wd) -> {
-            ListaStem.add(wd.getStem());
+            stemList.add(wd.getStem());
         });
-        if (ListaStem.size() > 0) {
-            return ListaStem.get(0).toString();
+        if (stemList.size() > 0) {
+            return stemList.get(0).toString();
         } else {
             return word;
         }

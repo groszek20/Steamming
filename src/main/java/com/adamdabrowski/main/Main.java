@@ -26,8 +26,8 @@ public class Main {
     public static void main(String[] args) {
         try {
             WordOperations wordOperation = new WordOperations();
-            FileReader fileReader = new FileReader("plik.txt");
-            PrintWriter wordWritter = new PrintWriter("poWalidacji.txt");
+            FileReader fileReader = new FileReader("source.txt");
+            PrintWriter wordWritter = new PrintWriter("output.txt");
             BufferedReader buff = new BufferedReader(fileReader);
             String line = buff.readLine();
             StringTokenizer stringTokenizer = new StringTokenizer(line);

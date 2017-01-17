@@ -36,7 +36,7 @@ public class WordOperations {
             ListaStem.add(wd.getStem());
         });
         if (ListaStem.size() > 0) {
-            return word = ListaStem.get(0).toString();
+            return ListaStem.get(0).toString();
         } else {
             return word;
         }

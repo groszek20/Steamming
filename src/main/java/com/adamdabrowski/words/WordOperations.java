@@ -32,8 +32,8 @@ public class WordOperations {
         PolishStemmer stemmer = new PolishStemmer();
         ArrayList<CharSequence> stemList = new ArrayList<CharSequence>();
         List<WordData> processing = stemmer.lookup(word);
-        processing.stream().forEach((wd) -> {
-            stemList.add(wd.getStem());
+        processing.stream().forEach((wordData) -> {
+            stemList.add(wordData.getStem());
         });
         if (stemList.size() > 0) {
             return stemList.get(0).toString();

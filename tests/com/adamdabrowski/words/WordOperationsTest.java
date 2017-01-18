@@ -18,6 +18,7 @@ public class WordOperationsTest {
     public void setWordStem() throws Exception {
         WordOperations wordOperations = new WordOperations();
         assertEquals("wiek", wordOperations.setWordStem("wieku"));
+        assertEquals("Kmicic", wordOperations.setWordStem("Kmicic"));
     }
 
 }

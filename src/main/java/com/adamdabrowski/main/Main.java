@@ -25,7 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+            // 1. zastanow sie, czy nie warto tego wszystkiego, co sie dzieje w mainie, wyrzucic do osobnego serwisu
+            // 2. wtedy zastanow sie tez, czy te klasy typu WordOperations nie powinny byc przekazane jako atrybuty klasy, tzn. w konstruktorze
             WordOperations wordOperation = new WordOperations();
+            // takie rzeczy jak to "source.txt" wyrzuc do konfiga albo ewentualnie do jakiejs private final w tej klasie
             FileReader fileReader = new FileReader("source.txt");
             PrintWriter wordWritter = new PrintWriter("output.txt");
             BufferedReader buff = new BufferedReader(fileReader);
@@ -39,6 +42,7 @@ public class Main {
             }
             fileReader.close();
             wordWritter.close();
+            // jestes pewien, ze moga sie pojawic tylko te dwa typy exceptiona? jesli nie, to dodaj na samym koncu chaina generyczna obssluge Exception
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException e) {

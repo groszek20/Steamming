@@ -1,16 +1,16 @@
 package com.adamdabrowski.words;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileOperations {
 
     private FileReader fileReader;
+    private PrintWriter printWriter;
 
-    public FileOperations(String fileInput) throws FileNotFoundException {
+
+    public FileOperations(String fileInput, String fileOutput) throws FileNotFoundException {
         this.fileReader = new FileReader(fileInput);
+        this.printWriter = new PrintWriter(fileOutput);
     }
 
     public String bufferedReadLine() throws IOException {
@@ -21,6 +21,19 @@ public class FileOperations {
 
     public void closeFileReader() throws IOException {
         this.fileReader.close();
+    }
+
+    public void wordWriter(String word) {
+        printWriter.print(word);
+    }
+
+    public void closePrintWriter(){
+        this.printWriter.close();
+    }
+
+    public void closeFiles() throws IOException{
+        this.fileReader.close();
+        this.printWriter.close();
     }
 
 }

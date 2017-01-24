@@ -7,6 +7,7 @@ package com.adamdabrowski.words;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import morfologik.stemming.WordData;
@@ -39,6 +40,16 @@ public class WordOperations {
             return stemList.get(0).toString();
         } else {
             return word;
+        }
+    }
+
+    public void wordWriteToFile(String line, FileOperations fileOperations) {
+        StringTokenizer stringTokenizer = new StringTokenizer(line);
+        String element = "";
+        while (stringTokenizer.hasMoreElements()) {
+            element = stringTokenizer.nextElement().toString();
+            element = wordFormat(element).toLowerCase();
+            fileOperations.wordWriter(setWordStem(element)+ " ");
         }
     }
 

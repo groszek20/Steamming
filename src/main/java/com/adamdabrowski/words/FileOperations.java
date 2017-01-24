@@ -7,7 +7,6 @@ public class FileOperations {
     private FileReader fileReader;
     private PrintWriter printWriter;
 
-
     public FileOperations(String fileInput, String fileOutput) throws FileNotFoundException {
         this.fileReader = new FileReader(fileInput);
         this.printWriter = new PrintWriter(fileOutput);
@@ -19,16 +18,8 @@ public class FileOperations {
         return buffer;
     }
 
-    public void closeFileReader() throws IOException {
-        this.fileReader.close();
-    }
-
     public void wordWriter(String word) {
-        printWriter.print(word);
-    }
-
-    public void closePrintWriter(){
-        this.printWriter.close();
+        this.printWriter.print(word);
     }
 
     public void closeFiles() throws IOException{

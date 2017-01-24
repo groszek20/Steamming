@@ -11,8 +11,8 @@ public class App {
     public void run(){
         try {
             FileOperations fileOperations = new FileOperations("source.txt","output.txt");
-            WordOperations wordOperation = new WordOperations();
             String line = fileOperations.bufferedReadLine();
+            WordOperations wordOperation = new WordOperations();
             wordOperation.wordWriteToFile(line, fileOperations);
             fileOperations.closeFiles();
         } catch (Exception e){

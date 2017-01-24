@@ -21,6 +21,7 @@ public class WordOperations {
 
     public String wordFormat(String word) {
         String formattedWord = "";
+        // tu tez sie zastanow, czy nie warto wrzucic regexpa do jakiegos public final tej klasy; ale to juz bardziej dyskusyjne niz w mainie; reszta wyglada ok :)
         Pattern pattern = Pattern.compile("[a-zA-Ząćęłńóśźż]+");
         Matcher matcher = pattern.matcher(word);
         while (matcher.find()) {

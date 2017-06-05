@@ -5,6 +5,7 @@
  */
 package com.adamdabrowski.words;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -20,6 +21,21 @@ import morfologik.stemming.polish.PolishStemmer;
 public class WordOperations {
 
     public String wordFormat(String word) {
+        String empty = "";
+        if (removeCharacters(word).length() <= 2) {
+            return empty;
+        } else if (userFilter(word) == true) {
+            return "@user";
+        } else if (word.contains("https://") == true) {
+            return empty;
+        } else if (stopWord(word) == true) {
+            return empty;
+        } else {
+            return removeCharacters(word);
+        }
+    }
+
+    public String removeCharacters(String word) {
         String formattedWord = "";
         Pattern pattern = Pattern.compile("[a-zA-Ząćęłńóśźż]+");
         Matcher matcher = pattern.matcher(word);
@@ -27,6 +43,16 @@ public class WordOperations {
             formattedWord = matcher.group(0);
         }
         return formattedWord;
+    }
+
+    public boolean userFilter(String word) {
+        boolean isUser = true;
+        if (word.charAt(0) == '@') {
+            return isUser;
+        } else {
+            isUser = false;
+            return isUser;
+        }
     }
 
     public String setWordStem(String word) {
@@ -49,8 +75,25 @@ public class WordOperations {
         while (stringTokenizer.hasMoreElements()) {
             element = stringTokenizer.nextElement().toString();
             element = wordFormat(element).toLowerCase();
-            fileOperations.wordWriter(setWordStem(element)+ " ");
+            fileOperations.wordWriter(setWordStem(element) + " ");
         }
+    }
+
+    public boolean stopWord(String word) {
+        boolean isStopList = false;
+        FileOperations fo = new FileOperations();
+        List<String> list = null;
+        try {
+            list = fo.stopWordList();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (word.equals(list.get(i))) {
+                isStopList = true;
+            }
+        }
+        return isStopList;
     }
 
 }

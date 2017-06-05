@@ -10,6 +10,7 @@ public class App {
 
     public void run(){
         try {
+
             FileOperations fileOperations = new FileOperations("source.txt","output.txt");
             String line = fileOperations.bufferedReadLine();
             WordOperations wordOperation = new WordOperations();

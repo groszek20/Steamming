@@ -11,7 +11,7 @@ public class App {
 
     public void run(){
         try {
-            FileOperations fileOperations = new FileOperations("select1","output.txt");
+            FileOperations fileOperations = new FileOperations("select2.txt","output.txt");
 
 //            Dla plików txt          
 //            String line = fileOperations.bufferedReadLineText();

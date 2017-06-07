@@ -3,6 +3,7 @@ package com.adamdabrowski.words;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,10 +34,22 @@ public class FileOperations {
         String[] buffer = null;
         while ((line = bufferedReader.readLine()) != null) {
             // use comma as separator
+            if (numberOfWords(line)>5) {
             buffer = line.split(cvsSplitBy);
-            list.add(buffer[0]);
+            list.add(buffer[0]);}
         }
         return list;
+    }
+    
+    private int numberOfWords(String line){
+        Scanner scanner = new Scanner(line);
+        int count = 0;
+        while (scanner.hasNext()) {
+            scanner.next();
+            count++;
+        }
+        scanner.close();
+        return count;
     }
 
     public void wordWriter(String word) {

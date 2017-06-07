@@ -31,6 +31,7 @@ public class WordOperations {
         } else if (stopWord(word) == true) {
             return empty;
         } else {
+            word = word.replaceAll("(.)\\1{1,}", "$1");
             return removeCharacters(word);
         }
     }

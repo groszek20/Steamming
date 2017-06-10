@@ -48,7 +48,7 @@ public class WordOperations {
 
     public boolean userFilter(String word) {
         boolean isUser = true;
-        if (word.charAt(0) == '@') {
+        if (word.charAt(0) == '@' || word.charAt(1) == '@' ) {
             return isUser;
         } else {
             isUser = false;
@@ -71,6 +71,12 @@ public class WordOperations {
     }
 
     public void wordWriteToFile(String line, FileOperations fileOperations) {
+        if (line == ";0") {
+            fileOperations.wordWriter(line + "\r\n");
+        }
+        if (line == ";1") {
+            fileOperations.wordWriter(line + "\r\n");
+        }
         StringTokenizer stringTokenizer = new StringTokenizer(line);
         String element = "";
         while (stringTokenizer.hasMoreElements()) {

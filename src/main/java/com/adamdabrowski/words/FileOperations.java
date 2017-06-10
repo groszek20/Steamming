@@ -33,10 +33,16 @@ public class FileOperations {
         String cvsSplitBy = ",";
         String[] buffer = null;
         while ((line = bufferedReader.readLine()) != null) {
-            // use comma as separator
-            if (numberOfWords(line)>5) {
+            if (numberOfWords(line)>5 && line.contains(":)")) {
             buffer = line.split(cvsSplitBy);
-            list.add(buffer[0]);}
+            list.add(buffer[0]);
+            list.add(";0");
+            }
+            if (numberOfWords(line)>5 && line.contains(":(")) {
+            buffer = line.split(cvsSplitBy);
+            list.add(buffer[0]);
+            list.add(";1");
+            }
         }
         return list;
     }

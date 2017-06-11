@@ -30,7 +30,7 @@ public class FileOperations {
         BufferedReader bufferedReader = new BufferedReader(this.fileReader);
         List<String> list = new ArrayList<String>();
         String line = "";
-        String cvsSplitBy = ",";
+        String cvsSplitBy = ";";
         String[] buffer = null;
         while ((line = bufferedReader.readLine()) != null) {
             if (numberOfWords(line)>5 && line.contains(":)")) {

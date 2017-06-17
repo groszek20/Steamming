@@ -70,7 +70,7 @@ public class WordOperations {
         }
     }
 
-    public void wordWriteToFile(String line, FileOperations fileOperations) {
+    public void stemWordWrite(String line, FileOperations fileOperations) {
         if (line == ";0") {
             fileOperations.wordWriter(line + "\r\n");
         }
@@ -83,6 +83,22 @@ public class WordOperations {
             element = stringTokenizer.nextElement().toString();
             element = wordFormat(element).toLowerCase();
             fileOperations.wordWriter(setWordStem(element) + " ");
+        }
+    }
+    
+    public void noStemWordWrite(String line, FileOperations fileOperations) {
+        if (line == ";0") {
+            fileOperations.wordWriter(line + "\r\n");
+        }
+        if (line == ";1") {
+            fileOperations.wordWriter(line + "\r\n");
+        }
+        StringTokenizer stringTokenizer = new StringTokenizer(line);
+        String element = "";
+        while (stringTokenizer.hasMoreElements()) {
+            element = stringTokenizer.nextElement().toString();
+            element = wordFormat(element).toLowerCase();
+            fileOperations.wordWriter(element + " ");
         }
     }
 

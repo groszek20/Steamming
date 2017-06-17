@@ -22,10 +22,10 @@ import java.util.Scanner;
  */
 public class MakeMePretty {
 
-    public void makePretty() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+    public void makePretty(String filePathIn, String filePathOut) throws FileNotFoundException, UnsupportedEncodingException, IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("output.txt"), "8859_2"));
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("pretty.txt"), "8859_2"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePathIn), "8859_2"));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePathOut), "8859_2"));
         String line = "";
         while ((line = reader.readLine()) != null) {
             if (numberOfWords(line) > 6) {
